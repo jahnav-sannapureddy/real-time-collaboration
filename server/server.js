@@ -21,7 +21,6 @@ io.on('connection', (socket) => {
   console.log(socket.emit('messageFromServer', 'Welcome to the server!'));
 
   socket.on('codeChange', (code) => {
-    console.log('code change detected');
     socket.broadcast.emit('codeChange',code);
   });
 
