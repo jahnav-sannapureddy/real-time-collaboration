@@ -2,7 +2,45 @@ const express = require('express');
 const http = require('http');
 const {Server} = require('socket.io');
 
+const dbConnect = require('./db/dbConnect')
+const bcrypt = require('bcrypt')
+const User = require('./db/modals/user.modal');
+const chalk = require('chalk');
+
 const app = express();
+
+app.use(express.json());
+
+app.get("/", (req, res) => res.status(200).send("Hello World!"));
+
+dbConnect()
+
+app.post("/register", (req, res) => {
+
+    bcrypt.hash(req.body.password, 10)
+    .then((hashedPass) => {
+      const user = new User({email: req.body.email, password: hashedPass});
+
+      user.save()
+      .then((result) => {
+        res.status(200).send({
+          msg: "User created successfully", 
+          result
+        })
+      })
+      .catch((er) => {
+        console.log(chalk.red("Error in creating user"))
+        res.status(500).send({msg: "Error in creating user", er})
+      })
+    })
+    .catch((er)=>{
+      console.log(chalk.red("Error in hashing password"))
+      res.status(500).send({
+        msg: "Error in hashing password",
+        er,
+      })
+    })
+})
 const server = http.createServer(app);
 const io = new Server(server, {
     cors: {
