@@ -20,15 +20,12 @@ io.on('connection', (socket) => {
   // Send a message to the client when a new user connects
   console.log(socket.emit('messageFromServer', 'Welcome to the server!'));
 
+
   socket.on('codeChange', (code) => {
     socket.broadcast.emit('codeChange',code);
   });
 
 });
-
-
-
-// Your other routes or middleware go here
 
 const PORT = process.env.PORT || 5000;
 

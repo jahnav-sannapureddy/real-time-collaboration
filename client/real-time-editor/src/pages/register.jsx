@@ -1,4 +1,4 @@
-const LoginPage = () => {
+const RegisterPage = () => {
   return (
     <div className=" border-solid">
       <form
@@ -8,7 +8,7 @@ const LoginPage = () => {
         <input
           className=" border placeholder:text-gray-400"
           type="text"
-          placeholder="username"
+          placeholder="email"
         />
         <input
           className=" border placeholder:text-gray-400"
@@ -21,4 +21,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default RegisterPage;

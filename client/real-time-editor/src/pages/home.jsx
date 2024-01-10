@@ -1,6 +1,6 @@
-import socket from "./socket";
+import socket from "../socket";
 import { useEffect, useState } from "react";
-function App() {
+const Home = () => {
   const [code, setCode] = useState();
   useEffect(() => {
     socket.on("codeChange", (data) => {
@@ -18,13 +18,19 @@ function App() {
   };
 
   return (
-    <textarea
-      value={code}
-      onChange={handleChange}
-      cols="30"
-      rows="10"
-    ></textarea>
+    <div>
+      <div className="container">
+        <textarea
+          className="form-control"
+          id="code-editor"
+          rows="20"
+          cols="100"
+          value={code}
+          onChange={handleChange}
+        ></textarea>
+      </div>
+    </div>
   );
-}
+};
 
-export default App;
+export default Home;
