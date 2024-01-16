@@ -18,16 +18,10 @@ const Home = () => {
   };
 
   return (
-    <div className="container ">
-      <div className="m-4 border-4 border-blue-950 w-3/4 p-2">
-        <textarea
-          className="form-control w-full"
-          id="code-editor"
-          value={code}
-          onChange={handleChange}
-        ></textarea>
-      </div>
-    </div>
+    <>
+      <button className="">Join</button>
+      <button>Create</button>
+    </>
   );
 };
 
