@@ -19,9 +19,9 @@ const Home = () => {
 
   return (
     <div>
-      <div className="container">
+      <div className="container border-2 border-black w-screen h-screen text-center">
         <textarea
-          className="form-control"
+          className="w-full h-full"
           id="code-editor"
           rows="20"
           cols="100"
