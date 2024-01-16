@@ -1,8 +1,8 @@
 const LoginPage = () => {
   return (
-    <div className=" border-solid">
+    <div className="border-solid">
       <form
-        className=" flex flex-col place-items-center h-screen"
+        className=" flex flex-col place-items-center"
         action="post"
       >
         <input
