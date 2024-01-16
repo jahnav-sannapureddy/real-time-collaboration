@@ -4,11 +4,10 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Poppins', sans-serif;
-  background-color: #fcfcfc;
 }
 
 .navbar{
-    height: 60px;
+    height: 4rem;
     position: relative;
     background-color: 	hsl(237, 40%, 55%);
 }
@@ -72,7 +71,7 @@ body {
     position: absolute;
     right: 0;
     width: 0;
-    background-color: hsl(237, 40%, 55%);
+    background-color: hsl(237, 40%, 67%);
     top: 4rem;
     height: calc(100vh - 4rem);
     transition: all 0.3s ease-in;
