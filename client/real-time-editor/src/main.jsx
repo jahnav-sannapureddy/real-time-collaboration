@@ -4,7 +4,7 @@ import "./index.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/home.jsx";
 import AboutPage from "./pages/about/about.jsx";
-import LoginPage from "./pages/login.jsx";
+import LoginPage from "./pages/login/login.jsx";
 import Layout from "./pages/layout.jsx";
 import RegisterPage from "./pages/register.jsx";
 
