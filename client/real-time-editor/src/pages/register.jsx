@@ -1,5 +1,5 @@
 import { useState } from "react";
-import RegisterUser from "../functions/user_functions";
+import { registerUser } from "../functions/user_functions";
 
 const RegisterPage = () => {
   const [username, setUsername] = useState("");
@@ -38,7 +38,7 @@ const RegisterPage = () => {
       <button
         type="submit"
         onClick={() => {
-          RegisterUser(username, email, password);
+          registerUser(username, email, password);
         }}
       >
         Create
