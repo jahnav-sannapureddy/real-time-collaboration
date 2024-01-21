@@ -39,18 +39,15 @@ const register = (req, res) => {
             user.save()
                 .then((result) => {
                     console.log(chalk.green("User created successfully"))
-                    var token = jwt.sign({ id: result._id }, process.env.JWT_SECRET);
-                    res.cookie('token',token,{
-                        httpOnly:true,
-                    })
+                    var token = jwt.sign({ id: result._id }, process.env.JWT_SECRET,{"expiresIn": "24h"});
                     res.status(200).send({
-                    msg: "User created successfully", 
-                    result
+                    success:"true", 
+                    token: token,
                     })
                 })
                 .catch((er) => {
-                    console.log(chalk.red("Error in creating user"))
-                    res.status(500).send({msg: "Error in creating user", er})
+                    console.log(chalk.red("Error in creating user"), er)
+                    res.status(500).send({success:"false", er})
                 })
                 })
         .catch((er)=>{
