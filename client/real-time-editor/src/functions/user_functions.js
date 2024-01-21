@@ -1,8 +1,11 @@
 import axios from "axios";
 
+const loginUser = (email,password) => {
+    
+    
+}
 
-
-const RegisterUser = (username,email,password) => {
+const registerUser = (username,email,password) => {
     axios.post("http://localhost:5000/register", {
         name: username, email: email, password: password
     }).then((res)=>{
@@ -14,4 +17,4 @@ const RegisterUser = (username,email,password) => {
     })
 }
 
-export default RegisterUser;
+export  {registerUser};
