@@ -1,7 +1,7 @@
 const bcrypt = require('bcrypt')
 const User = require('../db/models/user.model');
 const chalk = require('chalk');
-var jwt = require('jsonwebtoken');
+const jwt = require('jsonwebtoken');
 
 
 const login = (req, res) => {
@@ -39,7 +39,7 @@ const register = (req, res) => {
             user.save()
                 .then((result) => {
                     console.log(chalk.green("User created successfully"))
-                    var token = jwt.sign({ id: result._id }, process.env.JWT_SECRET,{"expiresIn": "24h"});
+                    var token = jwt.sign(user, process.env.JWT_SECRET,{"expiresIn": "24h"});
                     res.status(200).send({
                     success:"true", 
                     token: token,
