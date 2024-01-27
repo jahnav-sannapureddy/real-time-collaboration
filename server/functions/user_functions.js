@@ -44,6 +44,7 @@ const register = (req, res) => {
                         "name": user.name,
                         "email": user.email,
                     }, process.env.JWT_SECRET,{"expiresIn": "24h"});
+                    res.redirect('/login')
                     res.status(200).send({
                     success:true, 
                     })
