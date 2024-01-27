@@ -39,7 +39,11 @@ const register = (req, res) => {
             user.save()
                 .then((result) => {
                     console.log(chalk.green("User created successfully"))
-                    var token = jwt.sign(user, process.env.JWT_SECRET,{"expiresIn": "24h"});
+                    var token = jwt.sign({
+                        "id": result._id,
+                        "name": user.name,
+                        "email": user.email,
+                    }, process.env.JWT_SECRET,{"expiresIn": "24h"});
                     res.status(200).send({
                     success:true, 
                     })
