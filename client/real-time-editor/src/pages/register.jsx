@@ -5,33 +5,30 @@ import { Link } from "react-router-dom";
 const RegisterPage = () => {
   const [message, setMessage] = useState("info");
   const [showMessage, setShowMessage] = useState(false);
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+
+  const [user, setUser] = useState({ username: "", email: "", password: "" });
   const [cnfmpassword, setCnfmPassword] = useState("");
 
   const handleSubmission = (e) => {
     e.preventDefault();
     if (
-      username.trim() == "" ||
-      email.trim() == "" ||
-      password.trim() == "" ||
+      user.username.trim() == "" ||
+      user.email.trim() == "" ||
+      user.password.trim() == "" ||
       cnfmpassword.trim() == ""
     ) {
       setMessage("Please fill all the fields.!!!");
       setShowMessage(true);
       return;
     }
-    if (password != cnfmpassword) {
+    if (user.password != cnfmpassword) {
       setMessage("Both the passwords should match");
       setShowMessage(true);
       return;
     }
     setShowMessage(false);
-    registerUser(username, email, password);
-    setUsername("");
-    setEmail("");
-    setPassword("");
+    registerUser({ ...user });
+    setUser({ username: "", email: "", password: "" });
     setCnfmPassword("");
   };
 
@@ -45,20 +42,20 @@ const RegisterPage = () => {
           <span className="text-red-600 mx-8">{`${message}`}</span>
         )}
         <form className="flex flex-col px-8 my-4" onSubmit={handleSubmission}>
-          <label for="name" className="block mb-2">
+          <label htmlFor="name" className="block mb-2">
             Name
           </label>
           <input
             id="name"
-            value={username}
+            value={user.username}
             onChange={(e) => {
-              setUsername(e.target.value);
+              setUser({ ...user, username: e.target.value });
             }}
             className=" mb-4 bg-gray-50 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
             type="text"
             placeholder="Name"
           />
-          <label for="email" className="block mb-1">
+          <label htmlFor="email" className="block mb-1">
             Email
           </label>
           <input
@@ -66,25 +63,25 @@ const RegisterPage = () => {
             className="mb-4 bg-gray-50 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
             type="email"
             placeholder="example@mail.com"
-            value={email}
+            value={user.email}
             onChange={(e) => {
-              setEmail(e.target.value);
+              setUser({ ...user, email: e.target.value });
             }}
           />
-          <label for="password" className="block mb-1">
+          <label htmlFor="password" className="block mb-1">
             Password
           </label>
           <input
             id="password"
-            value={password}
+            value={user.password}
             onChange={(e) => {
-              setPassword(e.target.value);
+              setUser({ ...user, password: e.target.value });
             }}
             className="mb-4 bg-gray-50 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
             type="password"
             placeholder="password"
           />
-          <label for="cnfrmpassword" className="block mb-1">
+          <label htmlFor="cnfrmpassword" className="block mb-1">
             Confirm Password
           </label>
           <input

@@ -41,13 +41,12 @@ const register = (req, res) => {
                     console.log(chalk.green("User created successfully"))
                     var token = jwt.sign(user, process.env.JWT_SECRET,{"expiresIn": "24h"});
                     res.status(200).send({
-                    success:"true", 
-                    token: token,
+                    success:true, 
                     })
                 })
                 .catch((er) => {
                     console.log(chalk.red("Error in creating user"), er)
-                    res.status(500).send({success:"false", er})
+                    res.status(500).send({success:false, er})
                 })
                 })
         .catch((er)=>{
