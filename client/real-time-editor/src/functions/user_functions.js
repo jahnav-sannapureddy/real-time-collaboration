@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const loginUser = (email,password) => {
+const loginUser = (email,password) => { 
     axios.post("http://localhost:5000/register", {
        email: email, password: password
     }).then((res)=>{
