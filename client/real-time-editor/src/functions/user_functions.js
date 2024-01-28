@@ -19,9 +19,6 @@ const registerUser = (username,email,password) => {
         name: username, email: email, password: password
     }).then((res)=>{
         console.log('User Registered')
-        if (res.data.success) {
-            <Navigate to="/login" replace={true} />
-        }
     }).catch((er)=>{
         console.log(er)
     })
