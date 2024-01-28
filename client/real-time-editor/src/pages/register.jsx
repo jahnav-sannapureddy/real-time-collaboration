@@ -28,7 +28,7 @@ const RegisterPage = () => {
     }
     setShowMessage(false);
     registerUser({ ...user });
-    setUser({ username: "", email: "", password: "" });
+    // setUser({ username: "", email: "", password: "" });
     setCnfmPassword("");
   };
 
