@@ -12,7 +12,12 @@ const login = (req, res) => {
             bcrypt.compare(password, user.password)
             .then((match) => {
                 if(match){
-                    res.status(200).send({msg: "Login successful", user})
+                    var token = jwt.sign({
+                        "id": user._id,
+                        "name": user.name,
+                        "email": user.email,
+                    }, process.env.JWT_SECRET,{"expiresIn": "24h"});
+                    res.status(200).send({msg: "Login successful", user, token})
                 }else{
                     res.status(401).send({msg: "Password does not match"})
                 }
@@ -40,11 +45,6 @@ const register = (req, res) => {
             user.save()
                 .then((result) => {
                     console.log(chalk.green("User created successfully"))
-                    var token = jwt.sign({
-                        "id": result._id,
-                        "name": user.name,
-                        "email": user.email,
-                    }, process.env.JWT_SECRET,{"expiresIn": "24h"});
                     res.status(200).send({
                     success:true, 
                     })

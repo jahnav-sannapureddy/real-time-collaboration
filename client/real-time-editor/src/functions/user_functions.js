@@ -6,7 +6,9 @@ const loginUser = (email,password) => {
     }).then((res)=>{
         console.log(res.data.token)
         localStorage.setItem('token',res.data.token)
-        axios.defaults.headers.common['Authorization'] = res.data.token;
+        axios.defaults.headers.common['Authorization'] = `Bearer ${res.data.token}`;
+        console.log("Login Successful");
+        window.location.href = "/profile";
     }).catch((er)=>{
         console.log(er)
     })
