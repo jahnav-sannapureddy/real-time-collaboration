@@ -1,6 +1,6 @@
-import socket from "./socket";
+import socket from "../socket";
 import { useEffect, useState } from "react";
-function App() {
+const Home = () => {
   const [code, setCode] = useState();
   useEffect(() => {
     socket.on("codeChange", (data) => {
@@ -18,13 +18,15 @@ function App() {
   };
 
   return (
-    <textarea
-      value={code}
-      onChange={handleChange}
-      cols="30"
-      rows="10"
-    ></textarea>
+    <>
+      <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        Join
+      </button>
+      <button className=" bg-orange-500  hover:bg-orange-700 text-white font-bold py-2 px-4 rounded">
+        Create
+      </button>
+    </>
   );
-}
+};
 
-export default App;
+export default Home;

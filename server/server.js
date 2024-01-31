@@ -1,8 +1,28 @@
 const express = require('express');
+const cors = require('cors');
 const http = require('http');
 const {Server} = require('socket.io');
 
+const auth = require('./functions/auth')
+
+const dbConnect = require('./db/dbConnect')
+const chalk = require('chalk');
+const { login,register } = require('./functions/user_functions');
+
 const app = express();
+
+app.use(express.json());
+app.use(cors());
+
+app.get("/", (req, res) => res.status(200).send("Hello World!"));
+
+dbConnect()
+
+app.post("/register", register);
+app.post("/login", login);
+app.get("/profile", auth,  (req, res)=>{
+  res.status(200).json({msg: "You are authorized to access this page"});
+})
 const server = http.createServer(app);
 const io = new Server(server, {
     cors: {
@@ -20,15 +40,12 @@ io.on('connection', (socket) => {
   // Send a message to the client when a new user connects
   console.log(socket.emit('messageFromServer', 'Welcome to the server!'));
 
+
   socket.on('codeChange', (code) => {
     socket.broadcast.emit('codeChange',code);
   });
 
 });
-
-
-
-// Your other routes or middleware go here
 
 const PORT = process.env.PORT || 5000;
 
