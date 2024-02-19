@@ -6,10 +6,6 @@ const Home = () => {
     socket.on("codeChange", (data) => {
       setCode(data); // set the code to the value received from the server
     });
-
-    return () => {
-      // socket.disconnect();
-    };
   }, []);
 
   const handleChange = (e) => {
