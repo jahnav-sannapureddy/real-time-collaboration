@@ -3,6 +3,8 @@ const cors = require('cors');
 const http = require('http');
 const {Server} = require('socket.io');
 
+const auth = require('./functions/auth')
+
 const dbConnect = require('./db/dbConnect')
 const chalk = require('chalk');
 const { login,register } = require('./functions/user_functions');
@@ -18,6 +20,9 @@ dbConnect()
 
 app.post("/register", register);
 app.post("/login", login);
+app.get("/profile", auth,  (req, res)=>{
+  res.status(200).json({msg: "You are authorized to access this page"});
+})
 const server = http.createServer(app);
 const io = new Server(server, {
     cors: {

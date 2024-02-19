@@ -7,6 +7,7 @@ import AboutPage from "./pages/about.jsx";
 import LoginPage from "./pages/login.jsx";
 import Layout from "./pages/layout.jsx";
 import RegisterPage from "./pages/register.jsx";
+import ProfilePage from "./pages/profile/profile.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
@@ -16,6 +17,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           <Route index element={<Home />} />
           <Route path="login" element={<LoginPage />} />
           <Route path="register" element={<RegisterPage />} />
+          <Route path="profile" element={<ProfilePage />} />
           <Route path="about" element={<AboutPage />} />
         </Route>
       </Routes>
