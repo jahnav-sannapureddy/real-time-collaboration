@@ -20,7 +20,7 @@ const registerUser =  async ({username,email,password}) => {
     axios.post("http://localhost:5000/register", {"name": username, "email": email, "password": password}).then((res)=>{
     if(res.data.success===true){
         console.log('User Registered Successfully')
-        window.location.href = "/login";
+        // window.location.href = "/login";
         return res.data.success;
         
     }    

@@ -42,7 +42,7 @@ const RegisterPage = () => {
 
   return (
     <>
-      <ToastContainer/>
+      
       <div className="flex w-screen h-[calc(100vh-4rem)] justify-center items-center">
         <div className="flex flex-col m-8  rounded-lg w-96 overflow-hidden border-indigo-800 b border-2 justify-center">
           <span className="text-center py-3 text-lg bg-indigo-800 text-white">

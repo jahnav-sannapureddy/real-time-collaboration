@@ -14,7 +14,6 @@ const LoginPage = () => {
     }
   const handleSubmit = (e) =>{
     e.preventDefault();
-
     loginUser(inputs.email,inputs.password)
   }
 
@@ -27,6 +26,7 @@ const LoginPage = () => {
   }
   return (
     <>
+      <ToastContainer/>
       <div className="flex w-screen h-[calc(100vh-4rem)] justify-center items-center">
         <div className="flex flex-col m-8 rounded-lg overflow-hidden w-96 border-indigo-800 b border-2 justify-center">
           <span className="text-center py-3 text-lg bg-indigo-800 text-white">
