@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { registerUser } from "../functions/user_functions";
 import { Link } from "react-router-dom";
+import { api } from "../axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -33,11 +34,18 @@ const RegisterPage = () => {
       return;
     }
     setShowMessage(false);
-    registerUser({...user}).then((res) => {
-        showToastMessage();
-    })
+    // registerUser({ ...user });
     // setUser({ username: "", email: "", password: "" });
-    setCnfmPassword("");
+    // setCnfmPassword("");
+    api.post("/register", user).then((res) => {
+      if (res.data.status === "success") {
+        setMessage("User Created Successfully");
+        setShowMessage(true);
+      } else {
+        setMessage("User Already Exists");
+        setShowMessage(true);
+      }
+    });
   };
 
   return (
